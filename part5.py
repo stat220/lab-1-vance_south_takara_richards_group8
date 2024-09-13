@@ -8,5 +8,9 @@ print(data.info())
 
 # Part 5- potential interactions between experience_level, company_size, and job_title
 
-pivot_table = pd.pivot_table(data, values='salary_in_usd', index=['experience_level', 'company_size'], columns=['job_title'], aggfunc='mean')
-print(pivot_table)
+experience_size = pd.crosstab(data['experience_level'], data['company_size'], values=data['salary_in_usd'], aggfunc='mean')
+title_experience = pd.crosstab(data['job_title'], data['experience_level'], values=data['salary_in_usd'], aggfunc='mean')
+title_size = pd.crosstab(data['job_title'], data['company_size'], values=data['salary_in_usd'], aggfunc='mean')
+print(experience_size)
+print(title_experience)
+print(title_size)
